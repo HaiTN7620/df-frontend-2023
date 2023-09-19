@@ -1,0 +1,9 @@
+/* Varibale CSS */
+:root {
+  --header-height: 60px;
+  --primary-color: #2B3743;
+  --secondary-color: #C6D0D9;
+  --tertiary-color: #409eff;
+  --button-background-color: #c33949;
+  --button-text-color: #F7F8FA;
+}

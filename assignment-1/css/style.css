@@ -1,0 +1,90 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  height: 100%;
+  width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--primary-color);
+}
+
+/* Header */
+header {
+  height: var(--header-height);
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--secondary-color);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+header .user-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+}
+
+header .user-info img {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  margin-right: 10px;
+}
+/* End Header */
+
+/* Main */
+main {
+  padding: 30px 20px 20px;
+  background-color: #f7f8fa;
+  height: calc(100vh - var(--header-height));
+}
+
+/* End Main */
+
+/* Modal */
+.modal,
+.confirm-modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  transform: translate(-50%, -50%);
+  border: 1px solid var(--secondary-color);
+  background-color: #fff;
+  padding: 15px 20px;
+}
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-content {
+  border-radius: 5px;
+  text-align: center;
+}
+.modal-content #message {
+  margin-bottom: 20px;
+  padding: 0 20px;
+}
+
+/* Định dạng nút đóng modal */
+.close-btn {
+  color: var(--secondary-color);
+  display: inline-block;
+  font-size: 25px;
+  cursor: pointer;
+}
+.close-btn:hover {
+  color: var(--button-background-color);
+}
+.btn-group {
+  display: flex;
+  justify-content: center;
+}
+/* End Modal */

@@ -1,0 +1,52 @@
+/* Element CSS */
+button {
+  cursor: pointer;
+  outline: none;
+  border: 1px solid var(--button-background-color);
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
+  padding: 10px;
+  border-radius: 5px;
+}
+button:hover {
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
+}
+
+input, select {
+  padding: 10px;
+  border-radius: 5px;
+  width: 300px;
+  border: 1px solid var(--secondary-color);
+  outline: none;
+  font-size: 16px;
+  color: var(--primary-color);
+}
+input:focus,
+select:focus {
+  border: 1px solid var(--tertiary-color);
+}
+table {
+  width: 100%;
+}
+table thead tr th {
+  text-align: left;
+  padding: 10px;
+  border: 2px solid var(--secondary-color);
+}
+table tbody tr td {
+  padding: 5px;
+  border: 2px solid var(--secondary-color);
+}
+
+form {
+  text-align: left;
+}
+form select,
+form input {
+  width: 100%;
+}
+
+form label {
+  line-height: 30px;
+}
