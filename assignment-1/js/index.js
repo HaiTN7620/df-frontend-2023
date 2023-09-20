@@ -125,9 +125,9 @@ function addNewBook() {
   let topic = document.getElementById("topic").value;
 
   if (name == "" || author == "" || topic == "") {
-    if (name == "") showError("name");
-    if (author == "") showError("author");
-    if (topic == "") showError("topic");
+    if (name == "") checkValidate("name");
+    if (author == "") checkValidate("author");
+    if (topic == "") checkValidate("topic");
     return;
   }
 
