@@ -39,14 +39,14 @@ table tbody tr td {
   border: 2px solid var(--secondary-color);
 }
 
-form {
+.form {
   text-align: left;
 }
-form select,
-form input {
+.form select,
+.form input {
   width: 100%;
 }
 
-form label {
+.form label {
   line-height: 30px;
 }

@@ -81,3 +81,9 @@
   background-color: var(--button-background-color);
   color: var(--button-text-color);
 }
+
+.error {
+  color: red;
+  line-height: 30px;
+  display: none;
+}

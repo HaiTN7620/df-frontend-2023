@@ -27,7 +27,7 @@ if (
 )
   localStorage.setItem("dataAss1", JSON.stringify(dataOriginal));
 
-const data = JSON.parse(localStorage.getItem("dataAss1"));
+let data = JSON.parse(localStorage.getItem("dataAss1"));
 const table = document.getElementById("table");
 const renderTable = () => {
   let html = `
@@ -77,6 +77,9 @@ function openModalAddNewBook() {
 
 // Khi người dùng click nút Đóng Modal hoặc nút ngoài modal
 function closeModalAddNewBook() {
+  checkValidate("name");
+  checkValidate("author");
+  checkValidate("topic");
   addBookModal.style.display = "none";
 }
 
@@ -88,11 +91,45 @@ function closeModalAddNewBook() {
 //   }
 // };
 
+/** Show errpr */
+
+let nameError = document.getElementById("name-error");
+let authorError = document.getElementById("author-error");
+let topicError = document.getElementById("topic-error");
+
+function checkValidate(type) {
+  if (type == "name") {
+    if (document.getElementById("name").value == "") {
+      nameError.style.display = "block";
+      document.getElementById("name").style.border = "1px solid red";
+    } else {
+      nameError.style.display = "none";
+      document.getElementById("name").style.border = "1px solid #ccc";
+    }
+  } else if (type == "author") {
+    if (document.getElementById("author").value == "") {
+      authorError.style.display = "block";
+      document.getElementById("author").style.border = "1px solid red";
+    } else {
+      authorError.style.display = "none";
+      document.getElementById("author").style.border = "1px solid #ccc";
+    }
+  }
+}
+
+
 /** Add new book */
 function addNewBook() {
   let name = document.getElementById("name").value;
   let author = document.getElementById("author").value;
   let topic = document.getElementById("topic").value;
+
+  if (name == "" || author == "" || topic == "") {
+    if (name == "") showError("name");
+    if (author == "") showError("author");
+    if (topic == "") showError("topic");
+    return;
+  }
 
   let newBook = {
     name: name,
@@ -110,20 +147,36 @@ let messageDiv = document.getElementById("message");
 let isOpenConfirmModal = false;
 let idBookDelete = undefined;
 function deleteItem(index, name) {
-     idBookDelete = index;
-     let message = `<span>Do you want to delete <b>${name}</b> book ?</span>`;
-     confirmModal.style.display = "block";
-     messageDiv.innerHTML = message;
+  idBookDelete = index;
+  let message = `<span>Do you want to delete <b>${name}</b> book ?</span>`;
+  confirmModal.style.display = "block";
+  messageDiv.innerHTML = message;
 }
 
 function closeConfirmModal() {
-     idBookDelete = undefined;
-     confirmModal.style.display = "none";
+  idBookDelete = undefined;
+  confirmModal.style.display = "none";
 }
 
 function deleteBook() {
-    data.splice(idBookDelete, 1);
-    localStorage.setItem("dataAss1", JSON.stringify(data));
-    renderTable();
+  data.splice(idBookDelete, 1);
+  localStorage.setItem("dataAss1", JSON.stringify(data));
+  renderTable();
   closeConfirmModal();
 }
+
+function searchByName(partialName) {
+  let results = dataOriginal.filter((book) =>
+    book.name.toLowerCase().includes(partialName.toLowerCase())
+  );
+  console.log("results", results);
+  data = results;
+  renderTable();
+}
+
+document.querySelector("#search-box").addEventListener("keyup", function (e) {
+  if (e.key === "Enter" || e.keyCode === 13) {
+    let partialName = document.getElementById("search-box").value;
+    searchByName(partialName);
+  }
+});

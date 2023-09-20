@@ -22,7 +22,7 @@
     </header>
     <main>
       <div class="text-right mb-20 search-block">
-        <input type="text" id="search-box" placeholder="Search books">
+        <input type="text" id="search-box" placeholder="Press enter to search">
         <button onclick="openModalAddNewBook()">Add book</button>
       </div>
       <div class="main-table">
@@ -39,16 +39,18 @@
         <span class="close-btn" onclick="closeModalAddNewBook()">&times;</span>
       </div>
       <div class="modal-content">
-        <form>
-          <div class="mb-15">
+        <div class="form">
+          <div class="mb-10">
             <label class="bold" for="name">Name:</label>
-            <input type="text" id="name" name="fname" placeholder="Book name">
+            <input type="text" id="name" name="name" placeholder="Book name" onblur="checkValidate('name')">
+            <span class="error" id="name-error">Please enter book name</span>
           </div>
-          <div class="mb-15">
+          <div class="mb-10">
             <label class="bold" for="author">Author:</label>
-            <input type="text" id="author" name="lname" placeholder="Author">
+            <input type="text" id="author" name="author" placeholder="Author" onblur="checkValidate('author')">
+            <span class="error" id="author-error">Please enter author name</span>
           </div>
-          <div class="mb-15">
+          <div class="mb-10">
             <label class="bold" for="topic">Topic:</label>
             <select name="topic" id="topic" placeholder="Topic">
               <option value="Programming">Programming</option>
@@ -58,11 +60,12 @@
               <option value="Data Analyst">Data Analyst</option>
               <option value="Business Analyst">Business Analyst</option>
             </select>
+            <span class="error" id="topic-error">Please choose topic</span>
           </div>
           <div class="text-right">
             <button type="submit" class="btn-submit" onclick="addNewBook()">Create</button>
           </div>
-        </form>
+        <!-- </form> -->
       </div>
     </div>
     <!-- Modal confirm -->
